@@ -1,6 +1,6 @@
 ---
 type: outil
-statut: documente
+statut: teste
 cree: 2026-11-08
 modifie: 2026-11-08
 verifie: 2026-11-08
@@ -33,5 +33,7 @@ Inspection du paquet **5.0.0** : sa cible `buildTransitive/Microsoft.CodeAnalysi
 L'essai CI avec Metrics 5.0.0 a révélé l'absence de `BuildHost` dans le paquet. L'[exemple](../80-Exemples/csharp-ci/README.md) prépare ce composant depuis le paquet Microsoft correspondant et utilise C# 13 pour rester compatible avec le moteur embarqué. L'ajout du seul paquet Metrics n'a pas suffi dans l'environnement testé.
 
 Le rapport ne constitue pas toute la suite [CK](../02-Concepts/Metriques-CK.md). Il ne fournit pas non plus un tableau Base/PR ni une détection de duplication. Conserver le XML et séparer la réussite de l'analyse des seuils de qualité retenus.
+
+Vérification : génération réussie sur GitHub Actions Windows après préparation de BuildHost. L'artefact XML téléchargé contient `Calculator` et les mesures attendues. [Exécution vérifiée](https://github.com/Walfhand/second-brain/actions/runs/42489838557).
 
 [Guide de pipeline](../04-Guides/Analyse-statique-CSharp-en-pipeline.md) · [PMD CPD](PMD-CPD.md)

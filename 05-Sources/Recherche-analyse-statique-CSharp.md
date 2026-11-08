@@ -42,7 +42,9 @@ Les autres outils documentés sont des options découvertes pendant la recherche
 
 ## État des vérifications
 
-Le [README de l'exemple](../80-Exemples/csharp-ci/README.md) décrit les commandes de vérification. Les exécutions GitHub Actions fournissent les résultats et les rapports téléchargeables : [Actions du dépôt](https://github.com/Walfhand/second-brain/actions).
+Le [README de l'exemple](../80-Exemples/csharp-ci/README.md) décrit les commandes de vérification. L'[exécution du commit d8b3456](https://github.com/Walfhand/second-brain/actions/runs/42489838557) réussit pour les deux jobs. Les rapports téléchargés contiennent les métriques de `Calculator` et un résultat CPD valide.
+
+Essais locaux : build avec le SDK 10.0.402 sans avertissement ; CA1502 déclenché par une méthode volontairement complexe ; duplication et erreur de lexer bloquées avec PMD 7.29.0. Le premier essai Windows a révélé le composant BuildHost absent de Metrics 5.0.0. Le correctif de préparation et la limite de langage C# 13 sont documentés dans l'exemple.
 
 Les analyseurs complémentaires, SonarQube et NDepend ont fait l'objet d'une recherche documentaire. Ils ne sont pas installés dans l'exemple minimal. Le comparateur Base/PR et un calcul complet CK restent des extensions décrites, sans implémentation fournie.
 

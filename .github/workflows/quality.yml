@@ -40,7 +40,7 @@ jobs:
           if (-not $report.SelectSingleNode("//*[local-name()='Metric']")) { throw 'Rapport de metriques vide' }
       - name: Conserver les metriques
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: metriques-csharp
           path: artifacts/metrics.xml
@@ -75,7 +75,7 @@ jobs:
             --format xml --report-file artifacts/cpd.xml --fail-on-error
       - name: Conserver le rapport CPD
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: duplication-csharp
           path: artifacts/cpd.xml

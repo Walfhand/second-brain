@@ -8,3 +8,5 @@ Thumbs.db
 **/obj/
 artifacts/
 *.Metrics.xml
+metrics.xml
+cpd.xml

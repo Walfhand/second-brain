@@ -1,6 +1,6 @@
 ---
 type: outil
-statut: documente
+statut: teste
 cree: 2026-11-08
 modifie: 2026-11-08
 verifie: 2026-11-08
@@ -28,5 +28,7 @@ pmd cpd --dir src --language cs --minimum-tokens 100 --format xml --report-file 
 Le workflow proposé utilise PMD **7.29.0**, vérifie le SHA-256 de l'archive et conserve le rapport. Il échoue en cas de duplication ou d'erreur de traitement. Pour une phase d'observation, `--no-fail-on-violation` conserve le signal sans faire échouer sur les duplications ; garder `--fail-on-error`.
 
 Une erreur de lexer indique un problème de lecture d'un fichier. Ne pas transformer ce cas en « 0 % de duplication ». Les anciennes options qui ignorent des erreurs lexicales peuvent cacher un périmètre incomplet. [Options et codes de sortie](https://github.com/pmd/pmd/blob/main/docs/pages/pmd/userdocs/cpd/cpd.md).
+
+Vérification avec PMD 7.29.0 : source de démonstration acceptée, duplication volontaire bloquée avec le code 4, fichier à chaîne non terminée bloqué avec le code 5. Le contrôle et son artefact passent aussi sur GitHub Actions Linux.
 
 [Exemple exécutable](../80-Exemples/csharp-ci/README.md) · [Comparer Base et PR](../02-Concepts/Comparer-Base-et-PR.md)

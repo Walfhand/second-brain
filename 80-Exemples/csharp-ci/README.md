@@ -1,6 +1,6 @@
 ---
 type: exemple
-statut: documente
+statut: teste
 cree: 2026-11-08
 modifie: 2026-11-08
 verifie: 2026-11-08
@@ -58,6 +58,8 @@ Copier les configurations pertinentes, dont `Directory.Build.targets`, ajouter l
 Le workflow contrôle une révision. La [comparaison Base/PR](../../02-Concepts/Comparer-Base-et-PR.md) et les métriques CK absentes du rapport Microsoft demandent des étapes supplémentaires.
 
 ## Vérifier les contrôles
+
+Vérifications du 8 novembre 2026 : compilation locale sans avertissement, CA1502 bloquant sur un cas volontaire, CPD bloquant sur duplication et erreur de lexer. L'[exécution GitHub Actions vérifiée](https://github.com/Walfhand/second-brain/actions/runs/42489838557) réussit sur Windows et Linux. Les deux rapports XML ont été téléchargés et lus ; le rapport Microsoft mesure bien `Calculator`.
 
 Pour vérifier CA1502, introduire temporairement une méthode avec onze branches `if` indépendantes : le build doit signaler CA1502 et échouer avec `--warnaserror`. Retirer ensuite la méthode et reconstruire.
 

@@ -1,6 +1,6 @@
 ---
 type: outil
-statut: documente
+statut: teste
 cree: 2026-11-08
 modifie: 2026-11-08
 verifie: 2026-11-08
@@ -33,5 +33,7 @@ dotnet build MonProjet.csproj --configuration Release --no-restore --no-incremen
 Sources : [activation et exceptions](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview), [configuration et sévérité](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-options).
 
 Les diagnostics servent à décider si le build passe. Pour obtenir des mesures chiffrées à archiver, voir [Microsoft Metrics](Microsoft-CodeAnalysis-Metrics.md).
+
+Vérification : le projet fourni compile sans avertissement avec le SDK 10.0.402. Sur une copie temporaire, une méthode avec onze `if` a déclenché CA1502 et fait échouer le build. La compilation passe aussi sur le runner Windows de GitHub Actions.
 
 [Exemple de configuration](../80-Exemples/csharp-ci/README.md) · [Carte du sujet](../01-Cartes/Analyse-statique-CSharp.md)
