@@ -1,0 +1,8 @@
+{
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "00-Inbox",
+  "attachmentFolderPath": "70-Pieces-jointes"
+}

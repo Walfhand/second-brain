@@ -1,0 +1,10 @@
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/
+.trash/
+.DS_Store
+Thumbs.db
+**/bin/
+**/obj/
+artifacts/
+*.Metrics.xml
