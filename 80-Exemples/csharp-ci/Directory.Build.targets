@@ -1,0 +1,17 @@
+<Project>
+  <!-- shortcut: Metrics 5.0.0 omet BuildHost ; retirer cette cible quand le paquet le fournit. -->
+  <Target Name="PrepareMetricsBuildHost" BeforeTargets="Metrics">
+    <PropertyGroup>
+      <OriginalMetricsExeFolder>$(MetricsExeFolder)</OriginalMetricsExeFolder>
+      <MetricsExeFolder>$(MSBuildProjectDirectory)/$(BaseIntermediateOutputPath)metrics-tool</MetricsExeFolder>
+      <MetricsBuildHostRoot>$(NuGetPackageRoot)microsoft.codeanalysis.workspaces.msbuild/4.12.0/contentFiles/any/any</MetricsBuildHostRoot>
+    </PropertyGroup>
+    <ItemGroup>
+      <MetricsToolFiles Include="$(OriginalMetricsExeFolder)/**/*" />
+      <MetricsBuildHostFiles Include="$(MetricsBuildHostRoot)/**/*" />
+    </ItemGroup>
+    <Error Condition="'@(MetricsBuildHostFiles)' == ''" Text="BuildHost absent : restaurer les paquets avant de calculer les metriques." />
+    <Copy SourceFiles="@(MetricsToolFiles)" DestinationFiles="@(MetricsToolFiles->'$(MetricsExeFolder)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(MetricsBuildHostFiles)" DestinationFiles="@(MetricsBuildHostFiles->'$(MetricsExeFolder)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

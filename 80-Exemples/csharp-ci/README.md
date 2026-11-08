@@ -15,9 +15,10 @@ Bibliothèque minimale pour exécuter les configurations décrites dans le [guid
 | Fichier | Rôle |
 |---|---|
 | [Directory.Build.props](Directory.Build.props) | Analyseurs recommandés et fichier de seuils |
+| [Directory.Build.targets](Directory.Build.targets) | Préparation de BuildHost pour le paquet Metrics |
 | [.editorconfig](.editorconfig) | Activation explicite de CA1502 |
 | [CodeMetricsConfig.txt](CodeMetricsConfig.txt) | Seuil de complexité cyclomatique : 10 |
-| [Demo.csproj](Demo.csproj) | Projet .NET 10 et paquet Metrics 5.0.0 |
+| [Demo.csproj](Demo.csproj) | Projet .NET 10, C# 13 et paquet Metrics 5.0.0 |
 | [global.json](global.json) | SDK 10.0.402 |
 | [Calculator.cs](src/Calculator.cs) | Petite source à analyser |
 
@@ -44,9 +45,15 @@ pmd cpd --dir src --language cs --minimum-tokens 100 --format xml --report-file 
 
 Les rapports XML sont des sorties de build, exclus de Git. GitHub Actions les conserve comme artefacts.
 
+## Particularité du paquet Metrics
+
+Le paquet Metrics 5.0.0 contient Roslyn Workspaces 4.12 mais omet ses dossiers `BuildHost`. Le premier essai CI a échoué sur ce composant absent. Le projet télécharge le paquet officiel `Microsoft.CodeAnalysis.Workspaces.MSBuild` 4.12.0 ; `Directory.Build.targets` copie le moteur et les composants correspondants sous `obj/metrics-tool`, sans modifier le cache NuGet partagé.
+
+L'exemple fixe C# 13, compatible avec ce moteur. Avant de mesurer un projet employant une syntaxe plus récente, vérifier la compatibilité du moteur Metrics ou choisir une autre solution. La compilation .NET 10 reste indépendante de cette limite.
+
 ## Adapter à un projet réel
 
-Copier les configurations pertinentes, ajouter la référence Metrics au projet et reprendre le workflow. Modifier `PROJECT`, `SOURCE`, `working-directory` et la version de SDK selon le projet. Choisir une sortie Metrics par projet. Les propriétés doivent atteindre les projets mesurés ; vérifier la portée des fichiers `Directory.Build.props` déjà présents.
+Copier les configurations pertinentes, dont `Directory.Build.targets`, ajouter la référence Metrics et le `PackageDownload` du projet, puis reprendre le workflow. Modifier `PROJECT`, `SOURCE`, `working-directory` et la version de SDK selon le projet. Choisir une sortie Metrics par projet. Vérifier la portée des fichiers `Directory.Build.props` et `Directory.Build.targets` déjà présents.
 
 Le workflow contrôle une révision. La [comparaison Base/PR](../../02-Concepts/Comparer-Base-et-PR.md) et les métriques CK absentes du rapport Microsoft demandent des étapes supplémentaires.
 

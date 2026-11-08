@@ -30,6 +30,8 @@ Inspection du paquet **5.0.0** : sa cible `buildTransitive/Microsoft.CodeAnalysi
 
 ## Limites
 
+L'essai CI avec Metrics 5.0.0 a révélé l'absence de `BuildHost` dans le paquet. L'[exemple](../80-Exemples/csharp-ci/README.md) prépare ce composant depuis le paquet Microsoft correspondant et utilise C# 13 pour rester compatible avec le moteur embarqué. L'ajout du seul paquet Metrics n'a pas suffi dans l'environnement testé.
+
 Le rapport ne constitue pas toute la suite [CK](../02-Concepts/Metriques-CK.md). Il ne fournit pas non plus un tableau Base/PR ni une détection de duplication. Conserver le XML et séparer la réussite de l'analyse des seuils de qualité retenus.
 
 [Guide de pipeline](../04-Guides/Analyse-statique-CSharp-en-pipeline.md) · [PMD CPD](PMD-CPD.md)

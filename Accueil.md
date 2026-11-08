@@ -24,4 +24,4 @@ Le premier sujet est [l'analyse statique C#](01-Cartes/Analyse-statique-CSharp.m
 
 [Note](90-Modeles/Modele-note.md) · [Outil](90-Modeles/Modele-outil.md) · [Guide](90-Modeles/Modele-guide.md) · [Source](90-Modeles/Modele-source.md)
 
-[Archives](99-Archives/Archives.md)
+[Archives](99-Archives/Archives.md) · [Installation et dépôt GitHub](README.md)

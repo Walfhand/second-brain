@@ -18,12 +18,14 @@ Le résultat est un ensemble de diagnostics et de rapports sur une révision. Po
 
 Voir [l'exemple](../80-Exemples/csharp-ci/README.md) :
 
-- placer `Directory.Build.props`, `.editorconfig` et `CodeMetricsConfig.txt` au niveau voulu dans le dépôt C# ;
-- ajouter `Microsoft.CodeAnalysis.Metrics` au projet à mesurer, avec une version fixée et `PrivateAssets="all"` ;
+- placer `Directory.Build.props`, `Directory.Build.targets`, `.editorconfig` et `CodeMetricsConfig.txt` au niveau voulu dans le dépôt C# ;
+- reprendre la référence `Microsoft.CodeAnalysis.Metrics` et le `PackageDownload` de l'exemple, qui fournit le composant BuildHost absent du paquet testé ;
 - copier [le workflow](../.github/workflows/quality.yml), puis adapter `PROJECT` et `SOURCE` ;
 - conserver le SDK du projet dans un `global.json` et adapter `setup-dotnet`.
 
 Avec des projets multi-cibles, sélectionner aussi le framework à analyser. Avec plusieurs projets, exécuter la cible Metrics pour chacun et utiliser des chemins de sortie distincts.
+
+L'exemple compile avec .NET 10 et fixe C# 13 pour le moteur Metrics embarqué. Vérifier cette compatibilité avant de reprendre l'exemple sur une base utilisant des syntaxes plus récentes.
 
 ## 2. Choisir les règles bloquantes
 
